@@ -2,4 +2,4 @@
 
 Members:
 1. Sakshee Tosniwal
-2. Dulce Acevedo 
+2. Dulce Deyanira Acevedo 
