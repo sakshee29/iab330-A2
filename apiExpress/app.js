@@ -38,8 +38,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const sequelize = require('./database');
-const History = require('./History');
+const sequelize = require('./Database/Database');
+const History = require('./Database/Model/History');
+const PeopleCounter = require('./Database/Model/PeopleCounter');
 
 sequelize.sync({ force: true }).then(() => console.log('db is ready'));
 

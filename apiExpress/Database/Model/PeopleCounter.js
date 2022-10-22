@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../Database');
 
-class History extends Model {};
+class PeopleCounter extends Model {};
 
-History.init({
+PeopleCounter.init({
   role: {
     type: DataTypes.STRING
   },
@@ -15,8 +15,8 @@ History.init({
   }
 }, {
   sequelize,
-  modelName: 'History',
+  modelName: 'PeopleCounter',
   timestamps: false
 })
 
-module.exports = History;
+module.exports = PeopleCounter;
