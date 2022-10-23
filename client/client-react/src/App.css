@@ -1,3 +1,22 @@
 .App {
   text-align: center;
 }
+
+.outer-container {
+  background-color: rgb(38,57,73);
+  height: 100%;
+}
+.timebar{
+  background-color: white;
+  text-align: left;
+  padding-inline: 5%;
+  font-size: large;
+  font-weight: bold;
+  border-color: white;
+  padding-top: 5px;
+}
+.inner-container {
+  background-color: rgb(65,84,103);
+  margin-top: 10%;
+  color: white;
+}
