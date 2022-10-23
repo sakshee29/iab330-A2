@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 import home from "../images/home.png"
 
 function RoomDetails(props) {
