@@ -11,8 +11,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-            <Route path='/' element={<Screen currentPage={currentPage} />}>
-            </Route>
+            <Route path='/' element={<Screen currentPage={currentPage} SetCurrentPage={SetCurrentPage} />} />
         </Routes>
       </div>
     </Router>

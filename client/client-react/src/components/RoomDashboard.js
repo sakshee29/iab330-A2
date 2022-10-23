@@ -1,10 +1,14 @@
 import {React, useState} from "react";
 import rightArrow from "../images/rightArrow.png";
 
-function RoomDashBoard() {
+function RoomDashBoard(props) {
 
     // eslint-disable-next-line
     const [roomStatus, setStatus] = useState("In Use");
+
+    const showDetailsPage = () => {
+        props.SetCurrentPage('Details');
+    }
 
     return (
         <>
@@ -14,9 +18,9 @@ function RoomDashBoard() {
         <div className="rooms-list">
             <p>ICU 1</p>
             <p id="room-status">{roomStatus}</p>
-            <a href="/">
-            <img src={rightArrow} className="right-arrow" alt="right arrow"></img>
-            </a>
+            <button onClick={showDetailsPage}>
+                <img src={rightArrow} className="right-arrow" alt="right arrow"></img>
+            </button>
         </div>
         </>
     );

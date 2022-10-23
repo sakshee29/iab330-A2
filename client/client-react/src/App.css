@@ -46,3 +46,9 @@
   padding-top: 7px;
   /* background-color: red; */
 }
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
