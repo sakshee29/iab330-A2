@@ -6,6 +6,7 @@
   background-color: rgb(38,57,73);
   height: 100%;
 }
+
 .timebar{
   background-color: white;
   text-align: left;
@@ -15,8 +16,33 @@
   border-color: white;
   padding-top: 5px;
 }
-.inner-container {
-  background-color: rgb(65,84,103);
+.page-title {
   margin-top: 10%;
-  color: white;
+  color: antiquewhite;
+}
+
+.rooms-list {
+  background-color: rgb(65,84,103);
+  color: antiquewhite;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 10%;
+  padding: 0px 30px;
+  text-align: left;
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+}
+
+#room-status {
+  background-color: #589f5c;
+  font-size: 20px;
+  border-radius: 10px;  
+  padding: 4px 20px;
+}
+
+.right-arrow {
+  height: 35px;
+  padding-top: 7px;
+  /* background-color: red; */
 }
