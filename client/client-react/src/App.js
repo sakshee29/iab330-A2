@@ -5,7 +5,7 @@ import Screen from './components/Screen';
 import './App.css';
 
 function App() {
-  const [currentPage, SetCurrentPage] = useState('Dashboard');
+  const [currentPage, SetCurrentPage] = useState('Details');
 
   return (
     <Router>
