@@ -38,4 +38,21 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+const sequelize = require('./Database/Database');
+const History = require('./Database/Model/History');
+const PeopleCounter = require('./Database/Model/PeopleCounter');
+
+sequelize.sync({ force: true }).then(() => console.log('db is ready'));
+
+app.get("/users", function(request, response) {
+  User.findAll().then(function(users) {
+    // finds all entries in the users table
+    response.send(users); // sends users back to the page
+  });
+});
+
+app.listen(3000, () => {
+  console.log("app is running");
+});
+
 module.exports = app;
