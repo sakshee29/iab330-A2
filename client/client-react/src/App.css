@@ -2,37 +2,124 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.outer-container {
+  background-color: rgb(38,57,73);
+  height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.home-icon {
+  margin-top: 5%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.home-icon img {
+  width: 50px;
+  height: 50px;
+}
+
+.timebar{
+  background-color: white;
+  text-align: left;
+  padding-inline: 5%;
+  font-size: large;
+  font-weight: bold;
+  border-color: white;
+  padding-top: 5px;
+}
+.page-title {
+  margin-top: 10%;
+  color: antiquewhite;
+}
+
+.rooms-list {
+  background-color: rgb(65,84,103);
+  color: antiquewhite;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 10%;
+  padding: 0px 30px;
+  text-align: left;
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+}
+
+#room-status {
+  background-color: #589f5c;
+  font-size: 20px;
+  border-radius: 10px;  
+  padding: 4px 20px;
+}
+
+.right-arrow {
+  height: 35px;
+  padding-top: 7px;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.room-info{
+  background-color: rgb(65,84,103);
+  text-align: left;
+  font-size: x-large;
+  font-weight: 500;
+  padding-left: 10%;
+  padding-top: 1px;
+  padding-bottom: 2%;
+}
+
+.room-info div{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.people-count{
+  background-color: rgba(250, 235, 215, 0.404);
+  font-size: 20px;
+  color: rgb(45, 44, 42);
+  margin-right: 10%;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#count-value {
+  font-size: 50px;
+}
+
+#count-heading {
+  color: rgba(45, 44, 42, 0.5);
+}
+
+.table-div {
+  margin-left: 5%;
+  margin-top:5%;
+  width: 90%;
+}
+
+#history {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#history td, #history th {
+  /* border: 1px solid #ddd; */
+  padding: 8px;
+}
+
+#history th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #da8695;
+  color: black;
+}
+
+
+#history td{
+  background-color: rgba(250, 235, 215, 1);
+  color: black;
 }
