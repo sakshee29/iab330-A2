@@ -4,18 +4,15 @@ const sequelize = require('../Database');
 class PeopleCounter extends Model {};
 
 PeopleCounter.init({
-  role: {
-    type: DataTypes.STRING
+  room: {
+    type: DataTypes.INTEGER
   },
-  entry: {
-    type: DataTypes.STRING
-  },
-  exit: {
-    type: DataTypes.STRING
+  counter: {
+    type: DataTypes.INTEGER
   }
 }, {
   sequelize,
-  modelName: 'PeopleCounter',
+  modelName: 'PeopleCounters',
   timestamps: false
 })
 
