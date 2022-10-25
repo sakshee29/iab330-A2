@@ -27,33 +27,19 @@ app.get("/testing", function(request, response) {
   });
 });
 
-app.get("/counter"), function(request, response){
+app.get("/counter", function(request, response) {
   PeopleCounter.findAll().then(function(counter) {
     // finds all entries in the users table
     response.send(counter); // sends users back to the page
   });
-}
+});
 
-// Initial set of users to populate the database with
-var defaultUsers = ["Nurse", "Doctor", "Visitor"];
-var users = defaultUsers.slice();
 
 function setup() {
   History.sync({ force: true }) // Using 'force: true' for demo purposes. It drops the table users if it already exists and then creates a new one.
-    .then(function() {
-      // Add default users to the database
-      for (var i = 0; i < users.length; i++) {
-        // loop through all users
-        History.create({ role: users[i], entry: "some time", exit: "some time"}); // create a new entry in the users table
-      }
-    });
   PeopleCounter.sync({ force: true }) // Using 'force: true' for demo purposes. It drops the table users if it already exists and then creates a new one.
   .then(function() {
-    // Add default users to the database
-    for (var i = 0; i < users.length; i++) {
-      // loop through all users
-      PeopleCounter.create({ room: 1, counter: 10}); // create a new entry in the users table
-    }
+    PeopleCounter.create({ roomNo: 1, count: 0});
   });
 }
 

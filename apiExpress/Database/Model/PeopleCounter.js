@@ -4,10 +4,10 @@ const sequelize = require('../Database');
 class PeopleCounter extends Model {};
 
 PeopleCounter.init({
-  room: {
+  roomNo: {
     type: DataTypes.INTEGER
   },
-  counter: {
+  count: {
     type: DataTypes.INTEGER
   }
 }, {

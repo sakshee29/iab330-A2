@@ -2,7 +2,7 @@ const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize('test-db', 'user', 'pass', {
   dialect: 'sqlite',
-  host: './room.db'
+  host: '../../data/room.db'
 })
 
 module.exports = sequelize;
