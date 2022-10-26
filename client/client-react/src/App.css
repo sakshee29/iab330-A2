@@ -43,8 +43,15 @@
   align-items: center;
 }
 
-#room-status {
+#room-status-free {
   background-color: #589f5c;
+  font-size: 20px;
+  border-radius: 10px;  
+  padding: 4px 20px;
+}
+
+#room-status-used {
+  background-color: #d45c4c;
   font-size: 20px;
   border-radius: 10px;  
   padding: 4px 20px;
