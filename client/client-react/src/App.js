@@ -6,6 +6,13 @@ import './App.css';
 import { useEffect } from 'react';
 import axios from 'axios';
 
+var baseURL;
+if(process.env.NODE_ENV === 'development'){
+  baseURL = 'http://localhost';
+}else {
+  baseURL = 'http://ec2-54-164-110-39.compute-1.amazonaws.com'
+}
+
 function App() {
   const [currentPage, SetCurrentPage] = useState('Dashboard');
   const [historyData, SetHistoryData] = useState([
@@ -27,7 +34,7 @@ function App() {
   const hostname = '127.0.0.1';
 
   const client = axios.create({
-    baseURL: `http://${hostname}:4000`
+    baseURL: `${baseURL}:4000`
   });
 
   async function fetchHistoryData () {
