@@ -1,0 +1,37 @@
+version: "3.9"
+services:
+  api:
+    build: 
+      context: ./apiExpress
+      dockerfile: Dockerfile
+    container_name: api
+    hostname: api
+    restart: always
+    ports: 
+      - "4000:4000"
+    volumes:
+      - './apiExpress:/app'
+      - '/app/node_modules'
+    environment:
+      - NODE_ENV=production
+    networks:
+      - iab330
+  client:
+    build: 
+      context: ./client/client-react
+      dockerfile: Dockerfile.prod
+    container_name: client_prod
+    hostname: client_dprod
+    restart: always
+    ports: 
+      - "3000:3000"
+    volumes:
+      - './client/client-react/src:/app/src'
+      - '/app/node_modules'
+    environment:
+      - NODE_ENV=production
+    networks:
+      - iab330
+  networks:
+    iab330:
+      external: true

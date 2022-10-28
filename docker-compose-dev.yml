@@ -1,39 +1,37 @@
 version: "3.9"
 services:
-  db:
-    image:  "sqilite3:14.5alpine"
+  api:
+    build: 
+      context: ./apiExpress
+      dockerfile: Dockerfile
+    container_name: api
+    hostname: api
     restart: always
-    container_name: postgressql-server
-    hostname: postgressql-server
-    ports:
-    -"5432:5432"
-    volumes: ./pgdata:var/var/lib/postgresql/data
-    environment:
-    -   POSTGRES_USER=dbuser
-    -   POSTGRES_PASSWORD=iab3302022
-    -   POSTGRES_DB=iab330nodered
-  nodered:
-    image: nodered/node-red
-    container_name: iab330nodered
-    hostname: iab330nodered
     ports: 
-    - "1880:1880"
+      - "4000:4000"
     volumes:
-    - ./nodered:/data
-  pgadmin:
-    image: dgpage/pgadmin4
+      - './apiExpress:/app'
+      - '/app/node_modules'
+    environment:
+      - NODE_ENV=development
+    networks:
+      - iab330
+  client:
+    build: 
+      context: ./client/client-react
+      dockerfile: Dockerfile.dev
+    container_name: client_dev
+    hostname: client_dev
     restart: always
-    environmnent: 
-      PGADMIN_DEFAULT_EMAIL: dulcedeyanira.acevedo@connect.edu.au
-      PGADMIN_DEFAULT_PASSWORD: iab330db
-      PGADMIN_LISTEN_PORT: 80
-    ports:
-     - "8080:80"
+    ports: 
+      - "3000:3000"
     volumes:
-      - pgadmin-data:/var/lib/pgadmin
-    links:
-     -"db:postgresql-server"
-  volumes:
-    pgdata:
-    pgadmin-data:
-
+      - './client/src:/app/src'
+      - '/app/node_modules'
+    environment:
+      - NODE_ENV=development
+    networks:
+      - iab330
+  networks:
+    iab330:
+      external: true
