@@ -1,4 +1,4 @@
-# iab330-A2
+# Assignment 2
 
 Members:
 1. Sakshee Tosniwal
