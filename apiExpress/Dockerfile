@@ -1,0 +1,13 @@
+FROM node:16.17.1-bullseye-slim
+WORKDIR /app
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY package*.json .
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 4000
+
+CDM["npm", "start"]
