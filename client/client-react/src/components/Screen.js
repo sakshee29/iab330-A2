@@ -12,9 +12,17 @@ function Screen(props){
                     <p>9:41</p>
                 </div>
                 {props.currentPage === "Dashboard" ? 
-                    <RoomDashBoard SetCurrentPage={props.SetCurrentPage}/> 
+                    <RoomDashBoard 
+                        SetCurrentPage={props.SetCurrentPage} 
+                        counterData={props.counterData} 
+                    /> 
                     : 
-                    <RoomDetails SetCurrentPage={props.SetCurrentPage}/>
+                    <RoomDetails 
+                        SetCurrentPage={props.SetCurrentPage} 
+                        counterData={props.counterData} 
+                        historyData={props.historyData}
+                        startTime={props.startTime}
+                    />
                 }
             </div>
         </DeviceFrameset>

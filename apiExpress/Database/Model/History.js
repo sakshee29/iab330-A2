@@ -15,7 +15,7 @@ History.init({
   }
 }, {
   sequelize,
-  modelName: 'History',
+  modelName: 'Histories',
   timestamps: false
 })
 

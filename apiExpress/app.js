@@ -1,31 +1,41 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const sequelize = require('./Database/Database');
+const History = require('./Database/Model/History');
+const PeopleCounter = require('./Database/Model/PeopleCounter');
+const Location = require('./Database/Model/Location');
+const cors = require('cors');
+const express = require('express');
+const app = express();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+sequelize.sync({ force: true }).then(() => {
+  setup();
+  console.log('db is ready')
 });
+
+app.use(cors());
+
+app.get("/history", function(request, response) {
+  History.findAll().then(function(history) {
+    // finds all entries in the users table
+    response.send(history); // sends users back to the page
+  });
+});
+
+app.get("/counter", function(request, response) {
+  PeopleCounter.findAll().then(function(counter) {
+    // finds all entries in the users table
+    response.send(counter); // sends users back to the page
+  });
+});
+
+
+function setup() {
+  History.sync({ force: true }) // Using 'force: true' for demo purposes. It drops the table users if it already exists and then creates a new one.
+  PeopleCounter.sync({ force: true }) // Using 'force: true' for demo purposes. It drops the table users if it already exists and then creates a new one.
+  .then(function() {
+    PeopleCounter.create({ roomNo: 1, count: 0});
+  });
+  Location.sync({ force: true })
+}
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -38,20 +48,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-const sequelize = require('./Database/Database');
-const History = require('./Database/Model/History');
-const PeopleCounter = require('./Database/Model/PeopleCounter');
-
-sequelize.sync({ force: true }).then(() => console.log('db is ready'));
-
-app.get("/users", function(request, response) {
-  User.findAll().then(function(users) {
-    // finds all entries in the users table
-    response.send(users); // sends users back to the page
-  });
-});
-
-app.listen(3000, () => {
+app.listen(4000, () => {
   console.log("app is running");
 });
 

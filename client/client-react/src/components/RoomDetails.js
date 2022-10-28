@@ -2,6 +2,7 @@ import { React } from "react";
 import home from "../images/home.png"
 
 function RoomDetails(props) {
+
   // eslint-disable-next-line
   const returnHome = () => {
     props.SetCurrentPage('Dashboard');
@@ -16,49 +17,34 @@ function RoomDetails(props) {
           <p>Room ID : 1234</p>
           <div className="people-count">
             <span id="count-heading">Current number of people</span>
-            <span id="count-value">5</span>
-          </div>
-          <div className="people-count">
-            <span id="count-heading">Time in use</span>
-            <span id="count-value">7:12</span>
+            {/* <span id="count-value">{props.counterData[0].count}</span> */}
+            <span id="count-value">{props.counterData[0].count}</span>
           </div>
         </div>
         <div className="table-div">
           <table id="history">
-            <tr>
-              <th>ID</th>
-              <th>Type</th>
-              <th>Duration</th>
-            </tr>
-            <tr>
-              <td>03424</td>
-              <td>Visitor</td>
-              <td>00:30</td>
-            </tr>
-            <tr>
-              <td>03424</td>
-              <td>Nurse</td>
-              <td>00:30</td>
-            </tr>
-            <tr>
-              <td>03424</td>
-              <td>Doctor</td>
-              <td>00:30</td>
-            </tr>
-            <tr>
-              <td>03424</td>
-              <td>Doctor</td>
-              <td>00:30</td>
-            </tr>
-            <tr>
-              <td>03424</td>
-              <td>Nurse</td>
-              <td>00:30</td>
-            </tr>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Entry</th>
+              </tr>
+            </thead>
+            <tbody>
+              {props.historyData.slice(-8).map((row) => {
+                return (
+                  <tr>
+                    <td>{row.id}</td>
+                    <td>{row.role}</td>
+                    <td>{row.entry}</td>
+                  </tr>
+                )
+              })}
+            </tbody>
           </table>
         </div>
         <button onClick={returnHome} className="home-icon" >
-            <img src={home} alt="home icon"></img>
+          <img src={home} alt="home icon"></img>
         </button>
       </div>
     </>
