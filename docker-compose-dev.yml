@@ -30,8 +30,10 @@ services:
       - '/app/node_modules'
     environment:
       - NODE_ENV=development
+    stdin_open: true
+    tty: true
     networks:
       - iab330
-  networks:
-    iab330:
-      external: true
+networks:
+  iab330:
+    external: true

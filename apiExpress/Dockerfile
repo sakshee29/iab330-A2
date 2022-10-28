@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 4000
 
-CDM["npm", "start"]
+CMD ["npm", "start"]
