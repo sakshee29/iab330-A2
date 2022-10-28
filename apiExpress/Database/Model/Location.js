@@ -12,6 +12,9 @@ Location.init({
   },
   latitude: {
     type: DataTypes.FLOAT
+  },
+  datetime: {
+    type: DataTypes.STRING
   }
 }, {
   sequelize,
