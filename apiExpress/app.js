@@ -1,6 +1,7 @@
 const sequelize = require('./Database/Database');
 const History = require('./Database/Model/History');
 const PeopleCounter = require('./Database/Model/PeopleCounter');
+const Location = require('./Database/Model/Location');
 const cors = require('cors');
 const express = require('express');
 const app = express();
@@ -19,14 +20,6 @@ app.get("/history", function(request, response) {
   });
 });
 
-app.get("/testing", function(request, response) {
-  History.findAll().then(function(history) {
-    // finds all entries in the users table
-    History.create({ role: "dulce", entry: "some time", exit: "some time"});
-    response.send(history); // sends users back to the page
-  });
-});
-
 app.get("/counter", function(request, response) {
   PeopleCounter.findAll().then(function(counter) {
     // finds all entries in the users table
@@ -41,6 +34,7 @@ function setup() {
   .then(function() {
     PeopleCounter.create({ roomNo: 1, count: 0});
   });
+  Location.sync({ force: true })
 }
 
 // error handler

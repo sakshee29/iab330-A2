@@ -3,7 +3,6 @@ import home from "../images/home.png"
 
 function RoomDetails(props) {
 
-  // console.log(props.counterData[0]);
   // eslint-disable-next-line
   const returnHome = () => {
     props.SetCurrentPage('Dashboard');
@@ -21,10 +20,6 @@ function RoomDetails(props) {
             {/* <span id="count-value">{props.counterData[0].count}</span> */}
             <span id="count-value">{props.counterData[0].count}</span>
           </div>
-          {/* <div className="people-count">
-            <span id="count-heading">Time in use</span>
-            <span id="count-value">{Math.round((performance.now() - props.startTime)*1000)} sec</span>
-          </div> */}
         </div>
         <div className="table-div">
           <table id="history">
