@@ -2,7 +2,7 @@ version: "3.9"
 services:
   api:
     build: 
-      context: ./apiExpress
+      context: ./api
       dockerfile: Dockerfile
     container_name: api
     hostname: api
@@ -10,15 +10,17 @@ services:
     ports: 
       - "4000:4000"
     volumes:
-      - './apiExpress:/app'
+      - './api:/app'
       - '/app/node_modules'
     environment:
       - NODE_ENV=development
+    stdin_open: true
+    tty: true
     networks:
       - iab330
   client:
     build: 
-      context: ./client/client-react
+      context: ./client
       dockerfile: Dockerfile.dev
     container_name: client_dev
     hostname: client_dev
@@ -30,6 +32,7 @@ services:
       - '/app/node_modules'
     environment:
       - NODE_ENV=development
+      - DATABASE_PATH=${DB_PATH}
     stdin_open: true
     tty: true
     networks:
