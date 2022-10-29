@@ -30,9 +30,6 @@ function App() {
   ]);
 
   let startTime = performance.now();
-
-  const hostname = '127.0.0.1';
-
   const client = axios.create({
     baseURL: `${baseURL}:4000`
   });
@@ -41,12 +38,6 @@ function App() {
     await client
       .get('/history')
       .then((res) => {
-        // if (JSON.stringify(res.data) !== JSON.stringify(historyData)){
-        //   console.log("History Updates")
-        //   console.log(historyData);
-        //   return SetHistoryData(res.data);
-        // }
-        // console.log(historyData);
         return SetHistoryData(res.data);
       })
       .catch((e) => {
@@ -58,12 +49,6 @@ function App() {
     await client
       .get('/counter')
       .then((res) => {
-        // if (JSON.stringify(res.data) !== JSON.stringify(counterData)){
-        //   console.log("Counter Updates")
-        //   console.log(counterData);
-        //   return SetCounterData(res.data);
-        // }
-        // console.log(counterData);
         return SetCounterData(res.data);
       })
       .catch((e) => {
@@ -73,7 +58,6 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // console.log('This will run every second!');
       fetchHistoryData();
     }, 5000);
     return () => {
@@ -83,7 +67,6 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // console.log('This will run every second!');
       fetchCounterData();
     }, 5000);
     return () => {
