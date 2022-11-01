@@ -6,6 +6,13 @@ import './App.css';
 import { useEffect } from 'react';
 import axios from 'axios';
 
+var baseURL ;
+if(process.env.NODE_ENV === 'development'){
+  baseURL = 'http://localhost';
+}else {
+  baseURL = 'http://54.164.110.39'
+}
+
 function App() {
   const [currentPage, SetCurrentPage] = useState('Dashboard');
   const [historyData, SetHistoryData] = useState([
@@ -23,23 +30,14 @@ function App() {
   ]);
 
   let startTime = performance.now();
-
-  const hostname = '127.0.0.1';
-
   const client = axios.create({
-    baseURL: `http://${hostname}:4000`
+    baseURL: `${baseURL}:4000`
   });
 
   async function fetchHistoryData () {
     await client
       .get('/history')
       .then((res) => {
-        // if (JSON.stringify(res.data) !== JSON.stringify(historyData)){
-        //   console.log("History Updates")
-        //   console.log(historyData);
-        //   return SetHistoryData(res.data);
-        // }
-        // console.log(historyData);
         return SetHistoryData(res.data);
       })
       .catch((e) => {
@@ -51,12 +49,6 @@ function App() {
     await client
       .get('/counter')
       .then((res) => {
-        // if (JSON.stringify(res.data) !== JSON.stringify(counterData)){
-        //   console.log("Counter Updates")
-        //   console.log(counterData);
-        //   return SetCounterData(res.data);
-        // }
-        // console.log(counterData);
         return SetCounterData(res.data);
       })
       .catch((e) => {
@@ -66,7 +58,6 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // console.log('This will run every second!');
       fetchHistoryData();
     }, 5000);
     return () => {
@@ -76,7 +67,6 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // console.log('This will run every second!');
       fetchCounterData();
     }, 5000);
     return () => {

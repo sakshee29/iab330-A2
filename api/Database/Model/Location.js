@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../Database');
 
+// Model for the Location table
 class Location extends Model {};
 
 Location.init({
@@ -12,6 +13,9 @@ Location.init({
   },
   latitude: {
     type: DataTypes.FLOAT
+  },
+  datetime: {
+    type: DataTypes.STRING
   }
 }, {
   sequelize,
