@@ -1,16 +1,9 @@
-#Stage 1
-FROM node as build
+FROM node 
 WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY package*.json .
 RUN npm install
 COPY . .
-ARG REACT_APP_SECRET
-ENV REACT_APP_SECRET=$REACT_APP_SECRET
-RUN npm run build
-
-
-#Stage 2
-FROM nginx
-COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 3000
+CMD ["npm", "start"]
 

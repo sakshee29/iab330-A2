@@ -23,7 +23,7 @@ services:
       context: ./client
       dockerfile: Dockerfile.prod
     container_name: client_prod
-    hostname: client_dprod
+    hostname: client_prod
     restart: always
     ports: 
       - "3000:3000"
