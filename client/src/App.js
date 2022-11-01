@@ -6,13 +6,12 @@ import './App.css';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-const baseURL ='http://54.164.110.39';
-// var baseURL ;
-// if(process.env.NODE_ENV === 'development'){
-//   baseURL = 'http://localhost';
-// }else {
-//   baseURL = 'http://ec2-54-164-110-39.compute-1.amazonaws.com'
-// }
+var baseURL ;
+if(process.env.NODE_ENV === 'development'){
+  baseURL = 'http://localhost';
+}else {
+  baseURL = 'http://54.164.110.39'
+}
 
 function App() {
   const [currentPage, SetCurrentPage] = useState('Dashboard');
