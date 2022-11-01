@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../Database');
 
+// Model for the History table
 class History extends Model {};
 
 History.init({

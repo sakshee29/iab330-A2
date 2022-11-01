@@ -1,6 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../Database');
 
+// Model for the People counter table
 class PeopleCounter extends Model {};
 
 PeopleCounter.init({
