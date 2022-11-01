@@ -1,8 +1,7 @@
 const { Sequelize } = require('sequelize');
-
 const sequelize = new Sequelize('test-db', 'user', 'pass', {
   dialect: 'sqlite',
-  host: process.env.DATABASE_PATH
+  storage: 'room.db'
 })
 
 module.exports = sequelize;
